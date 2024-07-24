@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="register-card-left">
+            <h1 class="welcome-title">Welcome Back</h1>
+            <p class="welocme-second-title">Welcome back! Please enter your details.</p>
+            <label for="firstNameInput" class="email-label">First Name</label>
+            <input class="email-input" type="email" id="firstNameInput" placeholder="Enter Your First Name:">
+            <label for="lastNameInput" class="email-label">Last Name</label>
+            <input class="email-input" type="email" id="lastNameInput" placeholder="Enter Your Last Name:">
+            <label for="emailInput" class="email-label">E-mail</label>
+            <input class="email-input" type="email" id="emailInput" placeholder="Enter Your Email:">
+            <label for="passwordInput" class="password-label">Password</label>
+            <input class="password-input" type="password" id="passwordInput" placeholder="Enter Your Password:">
+            <div class="forgot-password-wrapper">
+                <input type="checkbox" id="rememberCheckbox" class="remember-checkbox">
+                <label for="rememberCheckbox" class="rememberLabel">Remember for 30 days</label>
+                <a href="#" class="forgot-password-link">Forgot Password</a>
+            </div>
+            
+            <button type="submit" class="sign-in-btn" id="signInBtn">Sign Up</button>
+            <button type="submit" class="sign-in-with-google-btn" id="signInWithGoogleBtn">
+                <img src="google-img.png" alt="google-icon" class="google-icon">
+                Sign In With Google
+            </button>
+            <div class="dont-have-account-wrapper">
+                <p class="dont-have-account-p">Don’t have an account? </p>
+                <a href="login.html" class="sign-up-link">Login</a>
+            </div>
+            <p class="author">&copy; ZakiyyullohDev</p>
+        </div>
+        <div class="register-card-right">
+            <img src="Group 1.png" class="right-card-img" alt="img" width="469" height="347">
+        </div>
+    </div>
+    
+    <div class="already-exist" id="alreadyExist">
+        <h3 class="already-exist-title" id="alreadyExistTitle">Already Exist</h3>
+        <p class="already-exist-info" id="alreadyExistInfo">This User Is Already Exist user </p>
+    </div>
+    
+    <script src="js/signup.js"></script>
+    <script>
+        document.getElementById('alreadyExist').addEventListener('click', function() {
+            this.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
