@@ -89,7 +89,7 @@ signInBtn.addEventListener('click', async () => {
             
             alreadyExistTitle.textContent = "Please Try Again in a Few Minutes!"
             
-            alreadyExistInfo.innerText = 'example@gmail.com'
+            alreadyExistInfo.innerText = ''
             
             alreadyExist.classList.add("animation")
             
@@ -250,13 +250,14 @@ passwordInput.addEventListener('keydown', async (e) => {
                 console.log(error);
                 console.log("InshaAlloh keyingi safar Ishalydi!");
                 
+                
                 alreadyExistTitle.style.color = "tomato"
                 
                 alreadyExist.style.border = "3px solid tomato"
                 
                 alreadyExistTitle.textContent = "Please Try Again in a Few Minutes!"
                 
-                alreadyExistInfo.innerText = 'example@gmail.com'
+                alreadyExistInfo.innerText = ''
                 
                 alreadyExist.classList.add("animation")
                 
@@ -321,3 +322,5 @@ passwordInput.addEventListener('keydown', async (e) => {
         }
     }
 })
+
+// {/* <i class="ri-check-line"></i> */}
