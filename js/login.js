@@ -112,6 +112,20 @@ signInBtn.addEventListener('click', async () => {
         } catch (error) {
             console.log(error);
             console.log("InshaAlloh keyingi safar Ishalydi!");
+
+            alreadyExistTitle.style.color = "tomato"
+            
+            alreadyExist.style.border = "3px solid tomato"
+            
+            alreadyExistTitle.textContent = "Please Try Again in a Few Minutes!"
+            
+            alreadyExistInfo.innerText = 'example@gmail.com'
+            
+            alreadyExist.classList.add("animation")
+            
+            setTimeout(()=> {
+                alreadyExist.classList.remove("animation")
+            }, 3000)
             
         }
         
@@ -250,6 +264,20 @@ passwordInput.addEventListener('keydown', async (e) => {
                 console.log(error);
                 console.log("InshaAlloh keyingi safar Ishalydi!");
                 
+                alreadyExistTitle.style.color = "tomato"
+            
+                alreadyExist.style.border = "3px solid tomato"
+                
+                alreadyExistTitle.textContent = "Please Try Again in a Few Minutes!"
+                
+                alreadyExistInfo.innerText = 'example@gmail.com'
+                
+                alreadyExist.classList.add("animation")
+                
+                setTimeout(()=> {
+                    alreadyExist.classList.remove("animation")
+                }, 3000)
+
             } 
             
             
