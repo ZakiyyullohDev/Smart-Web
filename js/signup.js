@@ -10,7 +10,7 @@ const alreadyExistInfo = document.getElementById('alreadyExistInfo')
 
 const signInWithGoogleBtn = document.getElementById('signInWithGoogleBtn')
 
-const regEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
 let userToken = JSON.parse(localStorage.getItem("UserToken")) || []
 
@@ -42,17 +42,17 @@ signInBtn.addEventListener('click', async () => {
             }
             
             if (response.status === 201) {
-
+                
                 alreadyExistTitle.style.color = "greenyellow"
-
+                
                 alreadyExist.style.border = "3px solid greenyellow"
-
+                
                 alreadyExistInfo.innerText = ''
                 
                 alreadyExistTitle.textContent = "You Are Registered Successfully!"
                 
                 alreadyExist.classList.add("animation")
-
+                
                 setTimeout(()=> {
                     alreadyExist.classList.remove("animation")
                 }, 3000)
@@ -66,12 +66,12 @@ signInBtn.addEventListener('click', async () => {
                 }, 5000)
                 return ''
             }
-
+            
             firstNameInput.classList.add("error")
             lastNameInput.classList.add("error")
             emailInput.classList.add("error")
             passwordInput.classList.add("error")  
-
+            
             setTimeout(()=> {
                 firstNameInput.classList.remove("error")
                 lastNameInput.classList.remove("error")
@@ -183,19 +183,19 @@ passwordInput.addEventListener('keydown', async (e) => {
                 
                 if (response.status === 201) {
                     alreadyExistTitle.style.color = 'greenyellow'
-
+                    
                     alreadyExist.style.border = "3px solid greenyellow"
-
+                    
                     alreadyExistInfo.innerText = "";
                     
                     alreadyExistTitle.innerText = "You Are Registered Successfully!"
                     
                     alreadyExist.classList.add("animation")
-
+                    
                     setTimeout(()=> {
                         alreadyExist.classList.remove("animation")
                     }, 3000)
-
+                    
                     lastNameInput.value = ''
                     firstNameInput.value = ''
                     emailInput.value = ''
@@ -205,11 +205,25 @@ passwordInput.addEventListener('keydown', async (e) => {
                     }, 5000)
                     return ''
                 }
-
+                
                 firstNameInput.classList.add("error")
                 lastNameInput.classList.add("error")
                 emailInput.classList.add("error")
                 passwordInput.classList.add("error")
+                
+                alreadyExistTitle.style.color = 'tomato'
+                
+                alreadyExist.style.border = "3px solid tomato"
+                
+                alreadyExistInfo.innerText = "";
+                
+                alreadyExistTitle.innerText = "Please fill in all fields!"
+                
+                alreadyExist.classList.add("animation")
+                
+                setTimeout(()=> {
+                    alreadyExist.classList.remove("animation")
+                }, 3000)
                 
                 setTimeout(()=> {
                     firstNameInput.classList.remove("error")
@@ -279,5 +293,3 @@ passwordInput.addEventListener('keydown', async (e) => {
         }
     }
 })
-
-// {/* <i class="ri-check-line"></i> */}

@@ -7,9 +7,9 @@ const alreadyExistTitle = document.getElementById('alreadyExistTitle')
 const alreadyExistInfo = document.getElementById('alreadyExistInfo')
 const signInWithGoogleBtn = document.getElementById('signInWithGoogleBtn')
 
-const regEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const regEx = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
-let userInfo = JSON.parse(localStorage.getItem("UserToken")) || []
+let userInfo = []
 
 const userTokenSetStorage = () => {
     localStorage.setItem("UserToken", JSON.stringify(userInfo))
@@ -38,7 +38,7 @@ signInBtn.addEventListener('click', async () => {
                 alreadyExist.classList.add("animation")
             }
             
-            if (response.status === 201) {
+            if (response.status === 200) {
                 
                 alreadyExistTitle.style.color = "greenyellow"
                 
@@ -68,17 +68,52 @@ signInBtn.addEventListener('click', async () => {
             emailInput.classList.add("error")
             passwordInput.classList.add("error")
             
+            alreadyExistTitle.style.color = "tomato"
+            
+            alreadyExist.style.border = "3px solid tomato"
+            
+            alreadyExistInfo.innerText = ''
+            
+            alreadyExistTitle.textContent = "Please fill in all fields!"
+            
+            alreadyExist.classList.add("animation")
+            
+            setTimeout(()=> {
+                alreadyExist.classList.remove("animation")
+            }, 3000)
+            
             setTimeout(()=> {
                 emailInput.classList.remove("error")
                 passwordInput.classList.remove("error")
             }, 5000)
             
+            let emailRegexTest = regEx.test(emailInput.value)
+            if (emailRegexTest) {
+                emailInput.classList.add("success")
+                setTimeout(() => {
+                    emailInput.classList.remove("success")
+                }, 5000)
+            }
+
+            alreadyExistTitle.style.color = "tomato"
+        
+            alreadyExist.style.border = "3px solid tomato"
+            
+            alreadyExistTitle.textContent = "Please write an email according to this example!"
+            
+            alreadyExistInfo.innerText = 'example@gmail.com'
+            
+            alreadyExist.classList.add("animation")
+            
+            setTimeout(()=> {
+                alreadyExist.classList.remove("animation")
+            }, 3000)
+
         } catch (error) {
             console.log(error);
             console.log("InshaAlloh keyingi safar Ishalydi!");
             
-        } 
-        
+        }
         
         emailInput.value = ''
         passwordInput.value = ''
@@ -106,13 +141,6 @@ signInBtn.addEventListener('click', async () => {
         passwordInput.classList.remove("error")
     })
     
-    let emailRegexTest = regEx.test(emailInput.value)
-    if (emailRegexTest) {
-        emailInput.classList.add("success")
-        setTimeout(() => {
-            emailInput.classList.remove("success")
-        }, 5000)
-    }
 })
 
 emailInput.addEventListener('keydown', (e) => {
@@ -140,9 +168,9 @@ passwordInput.addEventListener('keydown', async (e) => {
                 console.log('Alhamdulillah!:', responseData);
                 
                 if (responseData.message.includes("Wrong login or password")) {
-                    alreadyExist.classList.add("animation")
                     alreadyExistTitle.textContent = responseData.message
                     alreadyExistInfo.textContent = responseData.message
+                    alreadyExist.classList.add("animation")
                 }
                 
                 if (response.status === 200) {
@@ -176,10 +204,47 @@ passwordInput.addEventListener('keydown', async (e) => {
                 emailInput.classList.add("error")
                 passwordInput.classList.add("error")
                 
+                alreadyExistTitle.style.color = "tomato"
+                
+                alreadyExist.style.border = "3px solid tomato"
+                
+                alreadyExistInfo.innerText = ''
+                
+                alreadyExistTitle.textContent = "Please fill in all fields!"
+                
+                alreadyExist.classList.add("animation")
+                
+                setTimeout(()=> {
+                    alreadyExist.classList.remove("animation")
+                }, 3000)
+                
                 setTimeout(()=> {
                     emailInput.classList.remove("error")
                     passwordInput.classList.remove("error")
                 }, 5000)
+
+                let emailRegexTest = regEx.test(emailInput.value)
+                if (emailRegexTest) {
+                    emailInput.classList.add("success")
+                    setTimeout(() => {
+                        emailInput.classList.remove("success")
+                    }, 5000)
+                    return ''
+                }
+    
+                alreadyExistTitle.style.color = "tomato"
+            
+                alreadyExist.style.border = "3px solid tomato"
+                
+                alreadyExistTitle.textContent = "Please write an email according to this example!"
+                
+                alreadyExistInfo.innerText = 'example@gmail.com'
+                
+                alreadyExist.classList.add("animation")
+                
+                setTimeout(()=> {
+                    alreadyExist.classList.remove("animation")
+                }, 3000)
                 
             } catch (error) {
                 console.log(error);
@@ -214,12 +279,5 @@ passwordInput.addEventListener('keydown', async (e) => {
             passwordInput.classList.remove("error")
         })
         
-        let emailRegexTest = regEx.test(emailInput.value)
-        if (emailRegexTest) {
-            emailInput.classList.add("success")
-            setTimeout(() => {
-                emailInput.classList.remove("success")
-            }, 5000)
-        }
     }
 })
